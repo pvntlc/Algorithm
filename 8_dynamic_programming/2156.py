@@ -1,4 +1,4 @@
-# 2156 : 포도주 시식 - Silver 1
+# 2156번 : 포도주 시식 - Silver 1
 import sys
 input = sys.stdin.readline
 """
