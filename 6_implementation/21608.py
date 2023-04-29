@@ -1,7 +1,7 @@
 # 21608번 : 상어 초등학교 - Gold 5
 import sys
 input = sys.stdin.readline
-INF = sys.maxsize - 1
+INF = sys.maxsize
 """
 빈 자릿수도 세야하고, 주위 선호도 세야하네
 """
