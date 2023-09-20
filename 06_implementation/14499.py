@@ -21,7 +21,7 @@ INF = sys.maxsize
 6
 3
 '''
-n, m, x, y, k = map(int, input().split())
+n, m, y, x, k = map(int, input().split())
 num_list = [list(map(int, input().split())) for _ in range(n)]
 oper = list(map(int, input().split()))
 dice = [INF,0,0,0,0,0,0]
@@ -29,69 +29,18 @@ dice = [INF,0,0,0,0,0,0]
 dx = [1,-1,0,0] #동,서,북,남
 dy = [0,0,-1,1]
 
-top = 1
-
 def solve(number):
-    global top;
-    if top == 1:
-        if number == 1:
-            top = 4
-        elif number == 2:
-            top = 3
-        elif number == 3:
-            top = 5
-        elif number == 4:
-            top = 2
+    if number == 1:
+        dice[1],dice[2],dice[3],dice[4],dice[5],dice[6] = dice[4], dice[2], dice[1], dice[6], dice[5], dice[3]
 
-    elif top == 6:
-        if number == 1:
-            top = 3
-        elif number == 2:
-            top = 4
-        elif number == 3:
-            top = 2
-        elif number == 4:
-            top = 5
+    elif number == 2:
+        dice[1], dice[2], dice[3], dice[4], dice[5], dice[6] = dice[3], dice[2], dice[6], dice[1], dice[5], dice[4]
 
-    elif top == 3:
-        if number == 1:
-            top = 1
-        elif number == 2:
-            top = 6
-        elif number == 3:
-            top = 5
-        elif number == 4:
-            top = 2
+    elif number == 3:
+        dice[1], dice[2], dice[3], dice[4], dice[5], dice[6] = dice[5], dice[1], dice[3], dice[4], dice[6], dice[2]
 
-    elif top == 4:
-        if number == 1:
-            top = 6
-        elif number == 2:
-            top = 1
-        elif number == 3:
-            top = 2
-        elif number == 4:
-            top = 5
-
-    elif top == 2:
-        if number == 1:
-            top = 4
-        elif number == 2:
-            top = 3
-        elif number == 3:
-            top = 1
-        elif number == 4:
-            top = 6
-
-    elif top == 5:
-        if number == 1:
-            top = 3
-        elif number == 2:
-            top = 4
-        elif number == 3:
-            top = 6
-        elif number == 4:
-            top = 1
+    elif number == 4:
+        dice[1], dice[2], dice[3], dice[4], dice[5], dice[6] = dice[2], dice[6], dice[3], dice[4], dice[1], dice[5]
 
 for num in oper:
     nx = x + dx[num-1]
@@ -105,19 +54,10 @@ for num in oper:
     y = ny
 
     if num_list[y][x] == 0:
-        num_list[y][x] = dice[7-top]
-        dice[7-top] = 0
+        num_list[y][x] = dice[6]
 
-    elif dice[7-top] == 0:
-        dice[7-top] = num_list[y][x]
+    else:
+        dice[6] = num_list[y][x]
         num_list[y][x] = 0
 
-
-    print("top : ", top)
-    print("숫자 : ",dice[1:])
-    print(dice[top])
-    print()
-
-
-
-
+    print(dice[1])
