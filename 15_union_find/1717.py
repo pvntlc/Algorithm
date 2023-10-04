@@ -11,7 +11,8 @@ sys.setrecursionlimit(10**6)
 def find_parent(x):
     if parent[x] < 0:
         return x
-    return find_parent(parent[x])
+    parent[x] = find_parent(parent[x])
+    return parent[x]
 
 def union(x,y):
     px = find_parent(x)
